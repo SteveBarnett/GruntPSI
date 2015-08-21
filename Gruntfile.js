@@ -9,13 +9,25 @@ module.exports = function(grunt) {
         jshintrc: true
       },
       files: 'Gruntfile.js'
+    },
+    pagespeed: {
+      dev: {
+        options: {
+          nokey: true,
+          url: "http://example.com",
+          locale: "en_ZA",
+          strategy: "mobile",
+          threshold: 85
+        }
+      }
     }
   });
 
   // These plugins provide necessary tasks.
   grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-pagespeed');
 
   // Default task.
-  grunt.registerTask('default', ['jshint']);
+  grunt.registerTask('default', ['pagespeed']);
 
 };
